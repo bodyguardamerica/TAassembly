@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { getPdfs } from '../../lib/getPdfs'
 
@@ -7,14 +8,19 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-bg flex flex-col">
       {/* Header */}
-      <header className="border-b border-border px-6 py-8 text-center">
-        <p className="font-display text-tan text-2xl md:text-3xl tracking-[0.2em] uppercase mb-2">
-          Tabletop Armory
-        </p>
+      <header className="border-b border-border px-6 py-8 text-center flex flex-col items-center gap-4">
+        <Image
+          src="/logo.png"
+          alt="Tabletop Armory"
+          width={220}
+          height={110}
+          className="object-contain"
+          priority
+        />
         <h1 className="font-display text-text text-3xl md:text-4xl tracking-wide">
           Assembly Guides
         </h1>
-        <div className="mt-4 mx-auto w-24 h-px bg-border" />
+        <div className="mx-auto w-24 h-px bg-border" />
       </header>
 
       {/* Main content */}
