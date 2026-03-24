@@ -6,10 +6,14 @@ export type GuideEntry = {
   filename: string
   title: string
   url: string
+  imageUrl: string | null
 }
+
+const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp']
 
 export function getPdfs(): GuideEntry[] {
   const pdfDir = path.join(process.cwd(), 'public', 'pdfs')
+  const imgDir = path.join(process.cwd(), 'public', 'images')
 
   if (!fs.existsSync(pdfDir)) return []
 
@@ -22,12 +26,13 @@ export function getPdfs(): GuideEntry[] {
       const title = base
         .replace(/[-_]+/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase())
-      return {
-        slug,
-        filename,
-        title,
-        url: `/pdfs/${filename}`,
-      }
+
+      const imageExt = IMAGE_EXTENSIONS.find(ext =>
+        fs.existsSync(path.join(imgDir, `${base}.${ext}`))
+      )
+      const imageUrl = imageExt ? `/images/${base}.${imageExt}` : null
+
+      return { slug, filename, title, url: `/pdfs/${filename}`, imageUrl }
     })
     .sort((a, b) => a.title.localeCompare(b.title))
 }

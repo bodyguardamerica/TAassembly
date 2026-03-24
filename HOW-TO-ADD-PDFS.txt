@@ -7,16 +7,27 @@ HOW TO ADD A NEW ASSEMBLY GUIDE PDF
       bad:  Wraith Engine.pdf
       bad:  wraith_engine.pdf
 
-2. COPY THE FILE into this folder:
+2. COPY THE PDF into:
       D:\Code\TTAassembly\public\pdfs\
 
-3. OPEN a terminal in D:\Code\TTAassembly and run these 3 commands:
+3. (OPTIONAL) ADD A CARD IMAGE with the exact same base name:
+      Supported formats: .jpg  .jpeg  .png  .webp
+      Copy it into:
+      D:\Code\TTAassembly\public\images\
+
+      Example — if your PDF is:   wraith-engine.pdf
+      Name the image:             wraith-engine.jpg  (or .png, etc.)
+
+      If no image is provided, the card just shows the title and buttons.
+
+4. OPEN a terminal in D:\Code\TTAassembly and run these commands:
 
       git add public/pdfs/your-file-name.pdf
+      git add public/images/your-file-name.jpg   <-- only if you added an image
       git commit -m "add: your-file-name guide"
       git push
 
-4. WAIT ~30 seconds for Vercel to redeploy.
+5. WAIT ~30 seconds for Vercel to redeploy.
    The new card will appear on the site automatically.
 
 That's it. No code changes needed.

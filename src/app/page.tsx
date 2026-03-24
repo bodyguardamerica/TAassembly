@@ -36,11 +36,23 @@ export default function HomePage() {
                 key={guide.slug}
                 className="
                   bg-surface border border-border rounded-sm
-                  p-6 flex flex-col gap-4
+                  overflow-hidden flex flex-col
                   transition-all duration-200
                   hover:border-tan hover:scale-[1.015]
                 "
               >
+                {guide.imageUrl && (
+                  <div className="relative w-full aspect-video bg-bg">
+                    <Image
+                      src={guide.imageUrl}
+                      alt={guide.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                )}
+                <div className="px-6 pb-6 flex flex-col gap-4 flex-1">
                 <h2 className="font-display text-text text-base md:text-lg tracking-wide leading-snug flex-1">
                   {guide.title}
                 </h2>
@@ -74,6 +86,7 @@ export default function HomePage() {
                       <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
                   </a>
+                </div>
                 </div>
               </div>
             ))}
