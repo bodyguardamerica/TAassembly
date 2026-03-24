@@ -1,0 +1,27 @@
+HOW TO ADD A NEW ASSEMBLY GUIDE PDF
+=====================================
+
+1. NAME THE FILE using lowercase letters and dashes (no spaces):
+      good: wraith-engine.pdf
+      good: movement-tray-20mm.pdf
+      bad:  Wraith Engine.pdf
+      bad:  wraith_engine.pdf
+
+2. COPY THE FILE into this folder:
+      D:\Code\TTAassembly\public\pdfs\
+
+3. OPEN a terminal in D:\Code\TTAassembly and run these 3 commands:
+
+      git add public/pdfs/your-file-name.pdf
+      git commit -m "add: your-file-name guide"
+      git push
+
+4. WAIT ~30 seconds for Vercel to redeploy.
+   The new card will appear on the site automatically.
+
+That's it. No code changes needed.
+
+=====================================
+SITE URL:  https://assembly.tabletoparmory.store
+GITHUB:    https://github.com/bodyguardamerica/TAassembly
+=====================================
