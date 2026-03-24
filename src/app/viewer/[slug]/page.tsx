@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { getPdfs } from '../../../../lib/getPdfs'
 import PdfViewer from '../../../components/PdfViewer'
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return getPdfs().map((g) => ({ slug: g.slug }))
 }
