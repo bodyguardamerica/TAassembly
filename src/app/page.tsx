@@ -47,17 +47,37 @@ export default function HomePage() {
                 <h2 className="font-display text-text text-sm tracking-wide leading-snug flex-1">
                   {guide.title}
                 </h2>
-                <Link
-                  href={`/viewer/${guide.slug}`}
-                  className="
-                    inline-block text-center font-body text-xs tracking-widest uppercase
-                    border border-tan text-tan px-4 py-2 rounded-sm
-                    transition-colors duration-200
-                    hover:bg-tan hover:text-bg
-                  "
-                >
-                  View Guide
-                </Link>
+                <div className="flex gap-2">
+                  <Link
+                    href={`/viewer/${guide.slug}`}
+                    className="
+                      flex-1 text-center font-body text-xs tracking-widest uppercase
+                      border border-tan text-tan px-4 py-2 rounded-sm
+                      transition-colors duration-200
+                      hover:bg-tan hover:text-bg
+                    "
+                  >
+                    View Guide
+                  </Link>
+                  <a
+                    href={guide.url}
+                    download
+                    aria-label={`Download ${guide.title} PDF`}
+                    className="
+                      font-body text-xs tracking-widest uppercase
+                      border border-border text-muted px-3 py-2 rounded-sm
+                      transition-colors duration-200
+                      hover:border-tan hover:text-tan
+                      flex items-center
+                    "
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             ))}
           </div>
