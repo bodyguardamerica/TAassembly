@@ -1,0 +1,33 @@
+import fs from 'fs'
+import path from 'path'
+
+export type GuideEntry = {
+  slug: string
+  filename: string
+  title: string
+  url: string
+}
+
+export function getPdfs(): GuideEntry[] {
+  const pdfDir = path.join(process.cwd(), 'public', 'pdfs')
+
+  if (!fs.existsSync(pdfDir)) return []
+
+  return fs
+    .readdirSync(pdfDir)
+    .filter(f => f.toLowerCase().endsWith('.pdf'))
+    .map(filename => {
+      const base = filename.replace(/\.pdf$/i, '')
+      const slug = base.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+      const title = base
+        .replace(/[-_]+/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase())
+      return {
+        slug,
+        filename,
+        title,
+        url: `/pdfs/${filename}`,
+      }
+    })
+    .sort((a, b) => a.title.localeCompare(b.title))
+}
